@@ -12,7 +12,7 @@ const CardDetails = () => {
        },[])
 
 
-      console.log(services);
+    //   console.log(services);
  
     return (
         <div>
@@ -27,9 +27,9 @@ const CardDetails = () => {
                 </div>
             </div>
             <div className='mb-5 md:mt-20'>
-                <h1>Details Page</h1>
-                <div className='w-full h-72 p-5'>
-                <p className='text-black'>{}</p>
+                
+                <div className='w-full h-72 p-5 shadow-slate-200 bg-slate-400 rounded-lg'>
+                <p className='text-black font-bold'>{services.description}</p>
                 </div>
                 <Link to={`/checkout/${id}`}>
                     <button className='btn btn-primary mt-3'>CheckOut</button>
