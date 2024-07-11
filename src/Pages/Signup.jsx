@@ -1,10 +1,16 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
    const {createUser}=useContext(AuthContext);
+   const navigate=useNavigate();
+   const location=useLocation();
+ 
+   const from=location.state?.from?.pathname || "/services";
 
     const handlesignup=event=>{
         event.preventDefault();
@@ -14,10 +20,42 @@ const Signup = () => {
         const password=form.password.value;
         console.log(name,email,password);
 
-        createUser(email,password)
+        createUser(name,email,password)
         .then(result=>{
+          const saveUser={name: name, email: email}
+          fetch('http://localhost:5000/users',{
+            method: 'POST',
+            headers:{
+              'content-type':'application/json'
+            },
+            body: JSON.stringify(saveUser)
+           })
+           .then(res=>res.json())
+           .then(data=>{
+            if(data){
+              Swal.fire({
+                title: "Sign Up Successful",
+                showClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `
+                },
+                hideClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `
+                }
+              });
+   
+            }
+           })
           const user=result.user;
-          console.log(user);
+          // console.log(user);
+          navigate(from,{replace:true});
         })
         .catch(error=>console.log(error))
     }

@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 
@@ -7,15 +7,51 @@ const auth=getAuth(app);
 const AuthProvider = ({children}) => {
    const [user,SetUser]=useState(null);
    const [loading,setLoading]=useState(true);
+   const googleProvider=new GoogleAuthProvider();
 
-   const createUser=(email,password)=>{
-    setLoading(true)
-    return createUserWithEmailAndPassword(auth,email,password);
-   }
+   const createUser = (email, password, displayName) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Set the display name
+        updateProfile(userCredential.user, {
+          displayName: displayName
+        })
+        .then(() => {
+          console.log("User profile updated with display name:", displayName);
+  
+          // Send verification email
+          sendEmailVerification(userCredential.user)
+            .then(() => {
+              console.log("Verification email sent.");
+            })
+            .catch((error) => {
+              console.error("Error sending verification email:", error);
+            });
+  
+          // Return user credential
+          setLoading(false);
+          return userCredential;
+        })
+        .catch((error) => {
+          console.error("Error updating user profile:", error);
+          setLoading(false);
+        });
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
+  };
 
    const signIn=(email,password)=>{
     setLoading(true);
     return signInWithEmailAndPassword(auth,email,password);
+   }
+
+   const googleSignin=()=>{
+    setLoading(true)
+    return signInWithPopup(auth,googleProvider);
    }
 
    const logOut=()=>{
@@ -29,6 +65,28 @@ const AuthProvider = ({children}) => {
         SetUser(CurrentUser);
         console.log('current user',CurrentUser);
         setLoading(false);
+        if(CurrentUser && CurrentUser.email){
+          const loggedUser={
+            email: CurrentUser.email
+         }
+         console.log(loggedUser);
+          fetch(`http://localhost:5000/jwt`,{
+            method: 'POST',
+            headers:{
+              'content-type': 'application/json'
+            },
+            body:JSON.stringify(loggedUser)
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            // console.log("response",data);
+            //localstorage is not the best option here
+            localStorage.setItem('Access_token',data.token);
+          })
+        }
+        else{
+          localStorage.removeItem('Access_token');
+        }
       });
       return ()=>{
         return unsubscribe;
@@ -41,6 +99,7 @@ const AuthProvider = ({children}) => {
         loading,
         createUser,
         signIn,
+        googleSignin,
         logOut
 
     }

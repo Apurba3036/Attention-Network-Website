@@ -1,21 +1,21 @@
-import React from 'react';
+
 
 const VideoPlayer = () => {
   return (
-    <div class="hero min-h-screen bg-base-200">
-  <div class="hero-content flex-col lg:flex-row-reverse">
-    <div class="text-center lg:text-left">
-      <h1 class="text-5xl font-bold">Some words from our <span className='text-orange-500'>CEO!</span></h1>
+    <div className="hero mt-5 mb-5 min-h-screen bg-base-200">
+  <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="text-center lg:text-left">
+      <h1 className="text-5xl font-bold">Some words from our <span className='text-orange-500'>CEO!</span></h1>
       
     </div>
-    <div class="card shrink-0 w-full max-w-sm mx-auto  ">
+    <div className="card md:w-1/2 md:mr-5 ">
     <iframe
-      title="Facebook Video"
-      src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Ftheattentionnetwork%2Fvideos%2F737824531852516%2F&show_text=false&width=267&t=0"
-      width="300"
-      height="500"
+      title="Youtube Video"
+      src="https://www.youtube.com/embed/tMdFGrnp5XI?si=C2flZKh-Kzj27M1I"
+     
+        
       style={{ border: 'none', overflow: 'hidden' }}
-      className='rounded-lg'
+      className='rounded-lg h-96 w-full '
       allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
       allowFullScreen={true}
     ></iframe>

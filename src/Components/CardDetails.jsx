@@ -8,7 +8,7 @@ const CardDetails = () => {
         fetch(`http://localhost:5000/services/${id}`)
         .then(res=>res.json())
         .then(data=>setServices(data))
-        .catch(error => console.error('Error fetching JSON:', error));;
+        .catch(error => console.error('Error fetching JSON:', error));
        },[])
 
 

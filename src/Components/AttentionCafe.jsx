@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -20,7 +20,7 @@ const AttentionCafe = () => {
             
            </div>
         <Swiper
-          slidesPerView={4}
+          slidesPerView={3}
           spaceBetween={30}
           centeredSlides={true}
           pagination={{

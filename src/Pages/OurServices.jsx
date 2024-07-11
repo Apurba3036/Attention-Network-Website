@@ -12,7 +12,7 @@ const OurServices = () => {
     return (
         <div className='md:mt-8 mb-5 p-10'>
            <div className='text-center space-y-5 p-3 md:mb-5'>
-           <h3 className='text-1xl  text-orange-600'>Service</h3>
+           <h3  className='text-1xl  text-orange-600'>Service</h3>
             <h2 className='text-bold font-bold text-3xl'>Our Service Areas</h2>
             <p className='text-pretty'>A community studio is a versatile and inclusive space designed to serve and support the needs of a local community. It is a hub where individuals and businesses can come together to collaborate</p>
             

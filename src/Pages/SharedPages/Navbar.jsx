@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import useAdmin from '../Admin/useAdmin';
 const Navbar = () => {
 
     const {user,logOut}=useContext(AuthContext);
@@ -17,7 +18,9 @@ const Navbar = () => {
           }).then((result) => {
             if (result.isConfirmed) {
             logOut()
-            .then(()=>{})
+            .then(()=>{
+               
+            })
             .catch(error=>console.log(error));
               Swal.fire({
                 title: "Log Out!",
@@ -29,17 +32,27 @@ const Navbar = () => {
 
     }
 
+    // const isAdmin=true;
+
+    const [isAdmin]=useAdmin()
 
 
-    const navitems = <>
-        <li><Link className='font-bold' to="/">Home</Link></li>
-        <li><Link className='font-bold' to="/about">About Us</Link></li>
-        <li><Link className='font-bold' to="/member">Team Members</Link></li>
-        <li><Link className='font-bold' to="/services">Services</Link></li>
-        <li><Link className='font-bold' to="">Blogs</Link></li>
-        <li><Link className='font-bold' to="">Contacts</Link></li>
-        
-    </>
+
+    const navitems = (
+        <>
+            <li><Link className='font-bold text-white' to="/">Home</Link></li>
+            <li><Link className='font-bold text-white' to="/about">About Us</Link></li>
+            <li><Link className='font-bold text-white' to="/member">Team Members</Link></li>
+            <li><Link className='font-bold text-white' to="/services">Services</Link></li>
+            <li><Link className='font-bold text-white' to="">Blogs</Link></li>
+            <li><Link className='font-bold text-white' to="/contact">Contacts</Link></li>
+
+            {user?.email ?
+                <li><Link className='font-bold text-white' to="/bookings">My Bookings</Link></li> : <> </>}
+            {isAdmin ?
+                <li><Link className='font-bold text-white' to="/admin">Admin Dashboard</Link></li> : <> </>}
+        </>
+    );
     return (
         <div className="navbar bg-base-100 h-24 max-w-6xl mx-auto md:fixed md:bg-black md:z-10 md:bg-opacity-30 md:text-white" >
             <div className="navbar-start">
@@ -52,7 +65,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to='/' className="w-10 rounded-full">
-                    <img  src="https://media.licdn.com/dms/image/D560BAQGR9QHncJ_Xxg/company-logo_200_200/0/1708973263709/the_attention_network_99_logo?e=2147483647&v=beta&t=yvNcEVSqARJUIeg9tJ9vfX0NE_vlMpmOM7rAykShDBM" />
+                    <img alt="" src="https://media.licdn.com/dms/image/D560BAQGR9QHncJ_Xxg/company-logo_200_200/0/1708973263709/the_attention_network_99_logo?e=2147483647&v=beta&t=yvNcEVSqARJUIeg9tJ9vfX0NE_vlMpmOM7rAykShDBM" />
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">

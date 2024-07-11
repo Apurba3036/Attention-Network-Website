@@ -11,9 +11,8 @@ const Community = () => {
           <img src={community2} className="hidden   md:block w-1/2  absolute right-5 top-1/2 rounded-lg  shadow-2xl" />
         </div>
           <div className='md:ml-5'>
-            <h1 className="text-5xl font-bold">What is a community studio?</h1>
-            <p className="py-6">A lot of you might be wondering what we actually are. We're a community studio - a space where we want to host and promote our community of individuals and businesses.</p>
-            <Link to='/details' className="btn btn-warning">Know More</Link>
+          <h1 className="text-5xl font-bold">What is a community center?</h1>
+          <p className="py-6">A lot of you might be wondering what we actually are. Community centres, community centers, or community halls are public locations where members of a community tend to gather for group activities...</p>
           </div>
         </div>
       </div>
