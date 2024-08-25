@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
 import Swal from 'sweetalert2';
-
+import { getAuth, createUserWithEmailAndPassword, updateProfile, sendEmailVerification } from "firebase/auth";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
 
-   const {createUser}=useContext(AuthContext);
+  //  const {createUser}=useContext(AuthContext);
    const navigate=useNavigate();
    const location=useLocation();
- 
+   const auth = getAuth();
    const from=location.state?.from?.pathname || "/services";
 
     const handlesignup=event=>{
@@ -19,9 +19,26 @@ const Signup = () => {
         const email=form.email.value;
         const password=form.password.value;
         console.log(name,email,password);
-
-        createUser(name,email,password)
-        .then(result=>{
+        
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          updateProfile(userCredential.user, { displayName: name});
+          console.log("User profile updated with display name:", name);
+      
+          // Send verification email
+          sendEmailVerification(userCredential.user);
+          console.log("Verification email sent.");
+          const user = userCredential.user;
+          console.log(user);
+          
+        })
+        .catch((error) => {
+          console.log(error);
+         
+        })
+      
+        // createUser(name,email,password)
+        
           const saveUser={name: name, email: email}
           fetch('http://localhost:5000/users',{
             method: 'POST',
@@ -32,6 +49,7 @@ const Signup = () => {
            })
            .then(res=>res.json())
            .then(data=>{
+            console.log(data)
             if(data){
               Swal.fire({
                 title: "Sign Up Successful",
@@ -53,12 +71,12 @@ const Signup = () => {
    
             }
            })
-          const user=result.user;
-          // console.log(user);
+          
+         
           navigate(from,{replace:true});
-        })
-        .catch(error=>console.log(error))
+       
     }
+
     return (
         <div className="hero min-h-screen bg-base-100">
         <div className="hero-content md:mt-20 flex-col lg:flex-row">
@@ -91,7 +109,7 @@ const Signup = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <input className="btn btn-primary" type='submit' value='login'></input>
+                <input className="btn btn-primary" type='submit' value='Sign Up'></input>
               </div>
             </form>
             <div className='text-center mb-3'>

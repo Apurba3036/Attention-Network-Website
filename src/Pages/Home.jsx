@@ -1,12 +1,13 @@
-import React from 'react';
+
 import Banner from './Banner';
 import Community from './Community';
-import Services from './OurServices';
 import OurServices from './OurServices';
 import Mail from '../Components/Mail';
 import VideoPlayer from '../Components/VideoPlayer';
 import AttentionCafe from '../Components/AttentionCafe';
 import Comment from '../Components/Comment';
+import Map from '../Components/Map';
+
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
            <VideoPlayer></VideoPlayer>
            <AttentionCafe></AttentionCafe>
            <Comment></Comment>
+           <Map></Map>
         </div>
     );
 };

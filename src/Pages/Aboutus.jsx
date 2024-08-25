@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Aboutus = () => {
     return (
         <div>
-            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://static.vecteezy.com/system/resources/previews/026/797/560/large_2x/solidarity-unite-people-hands-together-community-teamwork-realistic-image-ultra-hd-free-photo.jpg")` }}>
+            <div className="hero min-h-screen" style={{ backgroundImage: `url("https://static.vecteezy.com/system/resources/previews/026/797/560/large_2x/solidarity-unite-people-hands-together-community-teamwork-realistic-image-ultra-hd-free-photo.jpg")`  }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-justify text-neutral-content">
                     <div className="p-5 mt-10">

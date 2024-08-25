@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 import useAdmin from '../Admin/useAdmin';
+import { useContext } from 'react';
 const Navbar = () => {
 
     const {user,logOut}=useContext(AuthContext);
@@ -40,12 +41,12 @@ const Navbar = () => {
 
     const navitems = (
         <>
-            <li><Link className='font-bold text-white' to="/">Home</Link></li>
-            <li><Link className='font-bold text-white' to="/about">About Us</Link></li>
-            <li><Link className='font-bold text-white' to="/member">Team Members</Link></li>
-            <li><Link className='font-bold text-white' to="/services">Services</Link></li>
-            <li><Link className='font-bold text-white' to="">Blogs</Link></li>
-            <li><Link className='font-bold text-white' to="/contact">Contacts</Link></li>
+            <li><Link className='font-bold text-black md:text-white' to="/">Home</Link></li>
+            <li><Link className='font-bold  text-black md:text-white' to="/about">About Us</Link></li>
+            {/* <li><Link className='font-bold text-white' to="/member">Team Members</Link></li> */}
+            <li><Link className='font-bold  text-black md:text-white' to="/services">Services</Link></li>
+            <li><Link className='font-bold  text-black md:text-white' to="">Blogs</Link></li>
+            <li><Link className='font-bold  text-black md:text-white' to="/contact">Contacts</Link></li>
 
             {user?.email ?
                 <li><Link className='font-bold text-white' to="/bookings">My Bookings</Link></li> : <> </>}

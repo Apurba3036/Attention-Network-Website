@@ -9,40 +9,34 @@ const AuthProvider = ({children}) => {
    const [loading,setLoading]=useState(true);
    const googleProvider=new GoogleAuthProvider();
 
-   const createUser = (email, password, displayName) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Set the display name
-        updateProfile(userCredential.user, {
-          displayName: displayName
-        })
-        .then(() => {
-          console.log("User profile updated with display name:", displayName);
-  
-          // Send verification email
-          sendEmailVerification(userCredential.user)
-            .then(() => {
-              console.log("Verification email sent.");
-            })
-            .catch((error) => {
-              console.error("Error sending verification email:", error);
-            });
-  
-          // Return user credential
-          setLoading(false);
-          return userCredential;
-        })
-        .catch((error) => {
-          console.error("Error updating user profile:", error);
-          setLoading(false);
-        });
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-      });
-  };
+//   const createUser = async (email, password, displayName) => {
+//   setLoading(true);
+//   try {
+//     // Create user with email and password
+//     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+//     // Set the display name
+//     await updateProfile(userCredential.user, { displayName: displayName });
+//     console.log("User profile updated with display name:", displayName);
+
+//     // Send verification email
+//     await sendEmailVerification(userCredential.user);
+//     console.log("Verification email sent.");
+
+//     // Return user credential
+//     setLoading(false);
+//     return userCredential;
+//   } catch (error) {
+//     console.error("Error during sign-up:", error);
+//     setLoading(false);
+//     throw error; // Re-throw the error if needed
+//   }
+// };
+
+// const createUser = (email, password) => {
+//   setLoading(true);
+//   return createUserWithEmailAndPassword(auth, email, password)
+// }
 
    const signIn=(email,password)=>{
     setLoading(true);
@@ -97,7 +91,7 @@ const AuthProvider = ({children}) => {
     const authinfo={
         user,
         loading,
-        createUser,
+        // createUser,
         signIn,
         googleSignin,
         logOut
