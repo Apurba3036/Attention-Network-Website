@@ -66,7 +66,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <Link to='/' className="w-10 rounded-full">
-                    <img alt="" src="https://media.licdn.com/dms/image/D560BAQGR9QHncJ_Xxg/company-logo_200_200/0/1708973263709/the_attention_network_99_logo?e=2147483647&v=beta&t=yvNcEVSqARJUIeg9tJ9vfX0NE_vlMpmOM7rAykShDBM" />
+                    <img alt="pic" src="https://media.licdn.com/dms/image/D560BAQGR9QHncJ_Xxg/company-logo_200_200/0/1708973263709/the_attention_network_99_logo?e=2147483647&v=beta&t=yvNcEVSqARJUIeg9tJ9vfX0NE_vlMpmOM7rAykShDBM"/>
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -76,7 +76,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                {
-                 user? <><Link onClick={handleLogout} className="btn btn-outline btn-warning">Log Out</Link></>: <Link to="/login" className="btn btn-outline btn-warning">Appoinment</Link>
+                 user? <><Link onClick={handleLogout} className="btn btn-outline btn-warning">Log Out</Link></>: <Link to="/login" className="btn btn-outline btn-warning">Login</Link>
                }
             </div>
         </div>
