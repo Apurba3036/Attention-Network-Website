@@ -64,7 +64,7 @@ const CheckoutForm = ({totalprice, bookings}) => {
         payment_method: {
          card: card,
         billing_details: {
-        name: "apurba"
+        name: "konika"
         ,
       },
     },

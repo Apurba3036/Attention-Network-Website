@@ -5,7 +5,7 @@ const Table = ({booking, handleDelete}) => {
     
     return (
 
-      <tr>
+      <tr>  
         <th>
           <label>
             <input type="checkbox" className="checkbox" />

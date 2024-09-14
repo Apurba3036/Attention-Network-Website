@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 
@@ -11,7 +12,7 @@ const Cardbody = ({service}) => {
           <h2 className=" font-bold text-1xl">{title}</h2>
       
           <div className="card-actions justify-center bottom-0">
-          {/* <Link to={`/details/${_id}`} className="btn btn-primary mt-3">Details</Link> */}
+          <Link to={`/details/${_id}`} className="btn btn-primary mt-3">Details</Link>
           </div>
         </div>
       </div>

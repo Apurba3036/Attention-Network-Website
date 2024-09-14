@@ -5,46 +5,48 @@ import {getToken, onMessage } from "firebase/messaging";
 import { Link, useNavigate } from 'react-router-dom';
 import { messaging } from '../firebase/firebase.config';
 import axios from 'axios';
+import PayemntTable from '../Components/PayemntTable';
 
 
 const MyBookings = () => {
     const {user}=useContext(AuthContext);
     const [bookings,setBookings]=useState([]);
+    const [payments,setPayments]=useState([]);
     const navigate=useNavigate();
   //notification permission
 
-useEffect(() => {
-    const checkNotificationPermission = async () => {
-        const permission = await Notification.requestPermission();
-        if (permission === "granted") {
-            const token = await getToken(messaging, { vapidKey: "BCg24Vmq6YgukPimod1cnpkbt1YHMDLRKuM6RKrRlTzzzJdhg11nPDVEqkM849te3bLhtuV2UQqgZkUl7E4m2Q8" });
-            if (token) {
-                console.log('Token generated:', token);
-                console.log(user.email);
+// useEffect(() => {
+//     const checkNotificationPermission = async () => {
+//         const permission = await Notification.requestPermission();
+//         if (permission === "granted") {
+//             const token = await getToken(messaging, { vapidKey: "BCg24Vmq6YgukPimod1cnpkbt1YHMDLRKuM6RKrRlTzzzJdhg11nPDVEqkM849te3bLhtuV2UQqgZkUl7E4m2Q8" });
+//             if (token) {
+//                 console.log('Token generated:', token);
+//                 console.log(user.email);
                 
-                // Send token to server
-                fetch(`http://localhost:5000/users/savetoken/${user.email}`, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ token })
-                })
-                .then(res => res.json())
-                .then(data => {
-                    console.log('Token saved to server:', data);
-                })
-                .catch(error => {
-                    console.error('Error saving token to server', error);
-                });
-            }
-        } else {
-            console.log('Permission denied');
-        }
-    };
+//                 // Send token to server
+//                 fetch(`http://localhost:5000/users/savetoken/${user.email}`, {
+//                     method: 'PATCH',
+//                     headers: {
+//                         'Content-Type': 'application/json'
+//                     },
+//                     body: JSON.stringify({ token })
+//                 })
+//                 .then(res => res.json())
+//                 .then(data => {
+//                     console.log('Token saved to server:', data);
+//                 })
+//                 .catch(error => {
+//                     console.error('Error saving token to server', error);
+//                 });
+//             }
+//         } else {
+//             console.log('Permission denied');
+//         }
+//     };
 
-    checkNotificationPermission();
-}, []);
+//     checkNotificationPermission();
+// }, []);
 
   
 
@@ -56,6 +58,7 @@ useEffect(() => {
 
 
     const url=`http://localhost:5000/bookings?email=${user.email}`;
+    
     useEffect(()=>{
       fetch(url,{
         method:'GET',
@@ -74,6 +77,30 @@ useEffect(() => {
         }
       });
     },[url,navigate])
+
+
+
+    const urlpayment=`http://localhost:5000/paymentdetails?email=${user.email}`;
+
+    useEffect(()=>{
+      fetch(urlpayment,{
+        method:'GET',
+        headers:{
+          authorization:`Bearer ${localStorage.getItem('Access_token')}`
+        }
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        if(!data.error){
+          setPayments(data)
+          console.log(payments);
+        }
+        else{
+          alert('user token expired');
+          navigate('/')
+        }
+      });
+    },[urlpayment,navigate])
     
     
   const handleDelete=id=>{
@@ -147,14 +174,51 @@ useEffect(() => {
    
     
   </table>
- 
-        <Link
+
+  <Link
           to="/payment"
           state={{ totalprice, bookings }}
           className="btn btn-warning mt-5 mb-3"
         >
           Payment
         </Link>
+ 
+ <div className='text-center font-semibold mt-5 text-orange-400'> <h1>Payment History</h1></div>
+  <table className="table mt-5">
+    {/* head */}
+    <thead>
+     
+      <tr>
+        <th>
+         <th>Transaction ID</th>
+        </th>
+        <th>Total Payment</th>
+        <th>Services</th>
+        <th>Contact Info</th>
+    
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    {payments.length > 0 ? (
+    payments.map(payment => (
+      <PayemntTable key={payment._id} payment={payment}></PayemntTable>
+    ))
+  ) : (
+    <tr>
+      <td colSpan="5">You have not booked yet.</td>
+    </tr>
+  )}
+    
+      
+    </tbody>
+   
+   
+    
+  </table>
+ 
+       
 </div>
 </div>
     );
