@@ -16,8 +16,8 @@ const Home = () => {
            <Banner></Banner>
            <Community></Community>
            <OurServices></OurServices>
-           <Mail></Mail>
-           <VideoPlayer></VideoPlayer>
+           {/* <Mail></Mail>
+           <VideoPlayer></VideoPlayer> */}
            <AttentionCafe></AttentionCafe>
            <Comment></Comment>
            <Map></Map>

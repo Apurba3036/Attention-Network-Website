@@ -1,0 +1,90 @@
+[
+    {
+      
+      "image": "https://media.licdn.com/dms/image/D5622AQEITv0pJ18Wxw/feedshare-shrink_1280/0/1715533788286?e=1720051200&v=beta&t=LUbwq7asJwhrAERgYjL658Skg4nXp8b7XYVFPKOsiPk",
+      "title": "Health and Wellness",
+      "description": "Immerse yourself in a holistic approach to well-being with our comprehensive Health and Wellness package. Attend invigorating yoga sessions designed to enhance flexibility and strength, participate in calming meditation workshops to achieve mental clarity and relaxation, and join informative nutrition seminars to learn about healthy eating habits and lifestyle changes. Our package offers a complete wellness experience, tailored to rejuvenate both your body and mind. Enjoy a selection of nourishing food items such as healthy smoothies, fresh fruit salads, nutritious granola bars, and a variety of nuts and seeds, complemented by soothing herbal teas to keep you energized throughout the day.",
+      "price": 10000,
+      "facilities": "Yoga sessions Meditation workshops Nutrition seminars",
+      "foodItems": "Healthy smoothies, Fruit salads, Granola bars, Nuts and seeds Herbal teas"
+      
+    },
+    {
+    
+      "image": "https://static.vecteezy.com/system/resources/thumbnails/029/317/657/small_2x/celebration-setting-lively-decorations-make-for-a-spirited-birthday-party-background-ai-generated-photo.jpg",
+      "title": "Birthday",
+      "description": "Celebrate your special day with elegance and joy at our versatile venue, ideal for hosting memorable birthday parties. Our package includes all the essentials for a perfect birthday celebration, from vibrant decorations that set the festive mood to a range of entertainment options that will keep your guests engaged and entertained. We also offer various catering options to suit your taste and preferences, including a delicious array of cakes, cupcakes, cookies, finger foods, refreshing juices, and indulgent ice cream. Let us make your birthday an extraordinary event filled with fun, laughter, and cherished memories.",
+      "price": 20000,
+      "details": {
+        "facilities": ["Decorations", "Entertainment", "Catering options"],
+        "foodItems": ["Cake", "Cupcakes", "Cookies", "Finger foods", "Juices", "Ice cream"]
+      }
+    },
+    {
+     
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK6cyg54MFOl8NXMoS4on80MK3sgS5sXhTlA&s",
+      "title": "Marriage",
+      "description": "Make your wedding day truly unforgettable with our luxurious Marriage package. Our spacious and elegantly designed hall is perfect for your special day, offering a sophisticated setting for your ceremony and reception. We provide a range of wedding decorations to create a beautiful ambiance, a state-of-the-art sound system for clear and crisp audio, and a well-organized stage setup to highlight your key moments. Our catering services include a delectable assortment of traditional and festive dishes such as Polao, Korma, Roast, Biryani, Doi, Misti, and Beef, ensuring that your guests enjoy a sumptuous feast that complements the grandeur of your celebration.",
+      "price": 50000,
+      "details": {
+        "facilities": ["Wedding decorations", "Sound system", "Stage setup"],
+        "foodItems": ["Polao", "Korma", "Roast", "Biryani", "Doi", "Misti", "Beef"]
+      }
+    },
+    {
+    
+      "image": "https://wallpapercave.com/wp/wp2848024.jpg",
+      "title": "Party",
+      "description": "Host an unforgettable party with our Party package, designed to cater to any type of celebration. Our versatile hall can be transformed to match your party theme, complete with stylish party decorations and a top-notch music system to set the mood. We offer a variety of entertainment options to keep your guests entertained throughout the event. Our catering includes a selection of savory and sweet dishes, such as Polao, Korma, Roast, Biryani, Doi, Misti, Beef, along with snacks and drinks to satisfy all tastes and preferences. Whether it’s a casual gathering or a grand celebration, our package ensures a fantastic experience for you and your guests.",
+      "price": 30000,
+      "details": {
+        "facilities": ["Party decorations", "Music system", "Entertainment options"],
+        "foodItems": ["Polao", "Korma", "Roast", "Biryani", "Doi", "Misti", "Beef", "Snacks", "Drinks"]
+      }
+    },
+    {
+      
+      "image": "https://potomac.edu/wp-content/uploads/2020/12/benefits-of-coding-e1606911064541.jpg",
+      "title": "Technology and Digital Media",
+      "description": "Dive into the world of Technology and Digital Media with our specialized classes and workshops. This package is perfect for those looking to enhance their skills in various digital fields. Participate in coding classes to learn the latest programming languages and techniques, engage in graphic design workshops to master the art of visual communication, and take part in video production classes to explore the intricacies of creating engaging video content. We provide a supportive learning environment with all necessary facilities, and keep you energized with refreshments like coffee, tea, pastries, sandwiches, and energy bars.",
+      "price": 25000,
+      "details": {
+        "facilities": ["Coding classes", "Graphic design workshops", "Video production classes"],
+        "foodItems": ["Coffee", "Tea", "Pastries", "Sandwiches", "Energy bars"]
+      }
+    },
+    {
+      
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1o8tydEseNaBFNvrvHVCgXmsrSQPSYLF2jg&s",
+      "title": "Business Seminar",
+      "description": "Elevate your business acumen with our Business Seminar package, designed to provide valuable insights and opportunities for professional growth. Attend engaging seminar sessions led by industry experts, network with fellow professionals to expand your connections, and enjoy a range of refreshments throughout the event. Our package includes coffee, tea, biscuits, finger foods, and a light lunch to keep you refreshed and focused during the seminar. This is the perfect opportunity to enhance your business skills, gain new perspectives, and stay ahead in the competitive business world.",
+      "price": 22000,
+      "details": {
+        "facilities": ["Seminar sessions", "Networking opportunities", "Refreshments"],
+        "foodItems": ["Coffee", "Tea", "Biscuits", "Finger foods", "Light lunch"]
+      }
+    },
+    {
+      
+      "image": "https://www.shutterstock.com/image-photo/colorful-hand-fan-pakha-pankha-600nw-2147123619.jpg",
+      "title": "Art and Craft Workshops",
+      "description": "Unleash your creativity with our Art and Craft Workshops, where you can explore various artistic disciplines. Participate in hands-on sessions covering painting, pottery, sculpture, and other craft activities. Our workshops are designed to foster creativity and skill development, providing all necessary art supplies and offering opportunities to showcase your work in exhibitions. Enjoy light refreshments such as coffee, tea, pastries, fruit snacks, and sandwiches while you immerse yourself in the artistic process and connect with fellow art enthusiasts.",
+      "price": 15000,
+      "details": {
+        "facilities": ["Art supplies", "Workshop sessions", "Exhibition opportunities"],
+        "foodItems": ["Coffee", "Tea", "Pastries", "Fruit snacks", "Sandwiches"]
+      }
+    },
+    {
+      
+      "image": "https://www.bproperty.com/blog/wp-content/uploads/2021/05/shutterstock...",
+      "title": "Cultural Events",
+      "description": "Experience the vibrant diversity of cultures through our Cultural Events package. Attend a series of captivating cultural performances that showcase different traditions and art forms, explore food stalls offering a variety of cultural dishes and street food, and participate in interactive workshops to learn more about diverse cultural practices. Our package provides a rich and immersive experience, complemented by a range of snacks and refreshments to keep you energized as you celebrate and learn about global cultures.",
+      "price": 18000,
+      "details": {
+        "facilities": ["Cultural performances", "Food stalls", "Workshops"],
+        "foodItems": ["Cultural dishes", "Street food", "Snacks", "Refreshments"]
+      }
+    }
+  ]
+  

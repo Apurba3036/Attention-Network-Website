@@ -1,7 +1,8 @@
 import React from 'react';
+import { FaCheck } from 'react-icons/fa6';
 
 const Table = ({booking, handleDelete}) => {
-    const {_id,customerName,email,service,service_id,image,mobile,date}=booking;
+    const {_id,customerName,email,service,service_id,image,mobile,date,status}=booking;
     
     return (
 
@@ -31,6 +32,9 @@ const Table = ({booking, handleDelete}) => {
         </td>
         <td>{mobile} <br /> {email}</td>
         <td>{date}</td>
+        <td>{status === 'accepted' ? <FaCheck /> : (
+                    <p className='font-bold'>Pending</p>
+                )}</td>
         <th>
           <button onClick={()=>handleDelete(_id)} className="btn btn-warning btn-xs">Delete</button>
         </th>

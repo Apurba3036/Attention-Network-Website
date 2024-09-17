@@ -1,12 +1,14 @@
-
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import axios from 'axios';
+import  { useContext, useEffect, useState } from 'react';
 import { FaUserGear } from "react-icons/fa6";
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../Providers/AuthProvider';
+
 
 const Allusers = () => {
-  const {user}=useContext(AuthContext);
+  
+  const [localUsers, setLocalUsers] = useState([]);  // Add state for managing users locally
+  
   const { data: users = [], isLoading, refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
@@ -14,7 +16,9 @@ const Allusers = () => {
       if (!res.ok) {
         throw new Error('Network response was not ok');
       }
-      return res.json();
+      const data = await res.json();
+      setLocalUsers(data);  // Store fetched users locally
+      return data;
     }
   });
 
@@ -22,84 +26,116 @@ const Allusers = () => {
     return <div>Loading...</div>;
   }
 
-  const handleMakeAdmin=user=>{
-    fetch(`http://localhost:5000/users/admin/${user._id}`,{
-        method:'PATCH'
+  const handleMakeAdmin = user => {
+    fetch(`http://localhost:5000/users/admin/${user._id}`, {
+      method: 'PATCH'
     })
-    .then(res=>res.json())
-    .then(data=>{
-        console.log(data)
-        if(data.modifiedCount){
-            refetch()
-            Swal.fire({
-                title: `${user.name} Admin Make Successful`,
-                showClass: {
-                  popup: `
-                    animate__animated
-                    animate__fadeInUp
-                    animate__faster
-                  `
-                },
-                hideClass: {
-                  popup: `
-                    animate__animated
-                    animate__fadeOutDown
-                    animate__faster
-                  `
-                }
-              });
+    .then(res => res.json())
+    .then(data => {
+      if (data.modifiedCount) {
+        refetch(); 
+        Swal.fire({
+          title: `${user.name} Admin Make Successful`,
+          showClass: {
+            popup: `animate__animated animate__fadeInUp animate__faster`
+          },
+          hideClass: {
+            popup: `animate__animated animate__fadeOutDown animate__faster`
+          }
+        });
+      }
+    });
+  };
+
+
+  const handleDelete=id=>{
+    console.log(id);
+    const procced=confirm('Are u sure want to delete this?');
+    if (procced){
+      const url=`http://localhost:5000/allusers/${id}`;
+
+     
+        fetch(url,{
+          method:'DELETE',
+          headers:{
+            authorization:`Bearer ${localStorage.getItem('Access_token')}`
+          }
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data)
+        if(data.deletedCount>0){
+             const remaining=localUsers.filter(newuser=>newuser._id!== id);
+             setLocalUsers(remaining);
         }
-    })
-
+        });
+     
+    }
   }
 
-  const handleDelete=user=>{
-
-  }
-
-
+//   const handleDelete = (user) => {
+//     console.log(user);
+//     const proceed = confirm('Are you sure you want to delete this?');
+    
+//     if (proceed) {
+//         axios
+//           .delete(`http://localhost:5000/user/${user._id}`) 
+//           .then((response) => {
+//               console.log(response.data);
+//               if (response.data.deletedCount > 0) {
+//                   const remaining = localUsers.filter(newuser => newuser._id !== user._id);
+//                   setLocalUsers(remaining); 
+//               }
+//           })
+//           .catch((error) => {
+//               console.error('Error deleting user:', error.message); // Handle any errors
+//           });
+//     }
+// };
 
   return (
-    <div>
-        <div className="hero md:h-96" style={{ backgroundImage: `url("https://burst.shopifycdn.com/photos/photography-product-download.jpg?width=1000&format=pjpg&exif=0&iptc=0")` }}>
-                <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-center text-neutral-content">
-                    <div className="p-5 mt-10">
-                        <h1 className="mb-5 text-5xl font-bold">Welcome {user.displayName}</h1>
-                        <p className="mb-5">Check Admin Panel</p>
-                   
-                    </div>
-                </div>
-            </div>
-      {users.length}
+    <div className='mt-9'>
+      <div className='text-center text-2xl font-semibold mt-5 text-orange-400'> 
+        <h1>All Users</h1>
+      </div>
       <div className="overflow-x-auto">
-  <table className="table table-zebra">
-    {/* head */}
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {users.map((user,index)=><tr key={user._id}>
-        <th>{index+1}</th>
-        <td>{user.name}</td>
-        <td>{user.email}</td>
-        <td>{ user.role==='admin'?'admin':
-          <button onClick={()=>handleMakeAdmin(user)} className="btn btn-warning btn-xs"><FaUserGear /></button>
-          }</td>
-        <td> <button onClick={()=>handleDelete(user)} className="btn btn-warning btn-xs">Delete</button></td>
-      </tr>)}
-      
-    
-    </tbody>
-  </table>
-</div>
-
+        <table className="table table-zebra">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {localUsers.map((user, index) => (
+              <tr key={user._id}>
+                <th>{index + 1}</th>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>
+                  {user.role === 'admin' ? 'admin' : (
+                    <button 
+                      onClick={() => handleMakeAdmin(user)} 
+                      className="btn btn-warning btn-xs">
+                      <FaUserGear />
+                    </button>
+                  )}
+                </td>
+                <td>
+                  <button 
+                    onClick={() => handleDelete(user._id)} 
+                    className="btn btn-warning btn-xs">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
