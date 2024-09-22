@@ -41,9 +41,9 @@ const AdminHome = () => {
         </ul>
       </div>
 
-      {/* Main Content */}
+     
       <div className="main-content w-full md:w-3/4 lg:w-4/5 p-6 bg-gray-100">
-        {/* Header */}
+       
         <div className="hero  h-30 rounded-lg overflow-hidden relative" style={{ backgroundImage: `url("https://burst.shopifycdn.com/photos/photography-product-download.jpg?width=1000&format=pjpg&exif=0&iptc=0")` }}>
           <div className="hero-overlay bg-opacity-70 absolute inset-0 bg-black"></div>
           <div className="hero-content relative z-5 text-center text-white">
@@ -54,7 +54,7 @@ const AdminHome = () => {
           </div>
         </div>
 
-        {/* Section Content */}
+       
         <div className="content mt-10 overflow-x-auto">
           {activeSection === 'dashboard' && <Overview></Overview>}
           {activeSection === 'allUsers' && <Allusers />}

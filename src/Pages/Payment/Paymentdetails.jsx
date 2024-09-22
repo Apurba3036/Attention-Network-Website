@@ -19,11 +19,7 @@ const Paymentdetails = () => {
     const convertToPdf = () => {
         const content = contentRef.current;
 
-        if (!content) {
-            console.error('Content reference is null');
-            return;
-        }
-
+       
         html2canvas(content, { scale: 3 }).then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
             const pdf = new jsPDF('p', 'pt', 'a4'); 
@@ -65,13 +61,20 @@ const Paymentdetails = () => {
 
     return (
         <div>
+            <div className="hero  h-60 rounded-lg overflow-hidden relative" style={{ backgroundImage: `url("https://burst.shopifycdn.com/photos/photography-product-download.jpg?width=1000&format=pjpg&exif=0&iptc=0")` }}>
+          <div className="hero-overlay bg-opacity-70 absolute inset-0 bg-black"></div>
+          <div className="hero-content relative z-5 text-center text-white">
+            
+          </div>
+        </div>
+
             <div
                 className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10"
                 ref={contentRef}
             >
                 <h2 className="text-3xl font-bold text-center mb-8 text-orange-400">Payment Details</h2>
 
-                {/* Transaction ID */}
+               
                 <div className="flex items-center justify-between border-b pb-4 mb-4">
                     <h3 className="text-xl font-semibold text-gray-700">Transaction ID</h3>
                     <div className="flex items-center gap-2">
@@ -80,7 +83,7 @@ const Paymentdetails = () => {
                     </div>
                 </div>
 
-                {/* Total Price */}
+               
                 <div className="flex items-center justify-between border-b pb-4 mb-4">
                     <h3 className="text-xl font-semibold text-gray-700">Total Price</h3>
                     <div className="flex items-center gap-2">
@@ -89,7 +92,7 @@ const Paymentdetails = () => {
                     </div>
                 </div>
 
-                {/* Quantity */}
+            
                 <div className="flex items-center justify-between border-b pb-4 mb-4">
                     <h3 className="text-xl font-semibold text-gray-700">Quantity</h3>
                     <div className="flex items-center gap-2">
@@ -98,7 +101,7 @@ const Paymentdetails = () => {
                     </div>
                 </div>
 
-                {/* Email */}
+               
                 <div className="flex items-center justify-between border-b pb-4 mb-4">
                     <h3 className="text-xl font-semibold text-gray-700">Email</h3>
                     <div className="flex items-center gap-2">
@@ -107,7 +110,7 @@ const Paymentdetails = () => {
                     </div>
                 </div>
 
-                {/* Items Names */}
+            
                 <div className="flex items-center justify-between border-b pb-4 mb-4">
                     <h3 className="text-xl font-semibold text-gray-700">Items</h3>
                     <div className="flex items-center gap-2">
@@ -116,7 +119,7 @@ const Paymentdetails = () => {
                     </div>
                 </div>
 
-                {/* Date */}
+              
                 <div className="flex items-center justify-between border-b pb-4 mb-4">
                     <h3 className="text-xl font-semibold text-gray-700">Payment Date</h3>
                     <div className="flex items-center gap-2">
@@ -125,7 +128,7 @@ const Paymentdetails = () => {
                     </div>
                 </div>
 
-                {/* Service Date */}
+              
                 <div className="flex items-center justify-between border-b pb-4 mb-4">
                     <h3 className="text-xl font-semibold text-gray-700">Service Date</h3>
                     <div className="flex items-center gap-2">
@@ -134,7 +137,7 @@ const Paymentdetails = () => {
                     </div>
                 </div>
 
-                {/* Order Status */}
+              
                 <div className="flex items-center justify-between">
                     <h3 className="text-xl font-semibold text-gray-700">Order Status</h3>
                     <div className="flex items-center gap-2">
