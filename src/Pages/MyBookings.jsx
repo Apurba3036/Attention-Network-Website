@@ -114,7 +114,7 @@ const MyBookings = () => {
                 </div>
 
                
-                <div className="content mt-10">
+                <div className="content mt-10 overflow-x-auto">
                     {activeSection === 'bookings' && (
                         <>
                             <div className='mt-5'>

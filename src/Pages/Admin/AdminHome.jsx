@@ -55,7 +55,7 @@ const AdminHome = () => {
         </div>
 
         {/* Section Content */}
-        <div className="content mt-10">
+        <div className="content mt-10 overflow-x-auto">
           {activeSection === 'dashboard' && <Overview></Overview>}
           {activeSection === 'allUsers' && <Allusers />}
           {activeSection === 'payments' && <Allpayments />}

@@ -1,41 +1,38 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const PayemntTable = ({payment}) => {
-    console.log(payment)
-    const {_id,transactionid,email,totalprice,itemsNames,date,order_status}=payment;
-    
-    return (
+const PayemntTable = ({ payment }) => {
+    const { _id, transactionid, email, totalprice, itemsNames, date, order_status } = payment;
 
-      <tr>  
-       
-        <td>
-          <div className="flex items-center gap-3">
-            
-            <div>
-              <div className="font-bold">{transactionid}</div>
-              <div className="text-sm opacity-50">Bangladesh</div>
-            </div>
-          </div>
-        </td>
-        <td>
-        {totalprice}
-       </td>
-        
-       <td>
-    {itemsNames.map((itemname, index) => (
-      <div key={index}>
-        {itemname}
-      </div>
-    ))}
-  </td>
-       
-        <td>{email}</td>
-        <td>{date}</td>
-        <td>{order_status}</td>
-        
-      </tr>
-    )
    
+    const formattedDate = date ? new Date(date).toLocaleDateString() : 'N/A';
+
+    return (
+        <tr className="">
+            <td>
+                <div className="flex flex-col">
+                    <div className="font-bold">{transactionid}</div>
+                    <div className="text-sm opacity-50">Bangladesh</div>
+                </div>
+            </td>
+            <td>{totalprice}</td>
+
+            <td>
+                {itemsNames.map((itemname, index) => (
+                    <div key={index}>{itemname}</div>
+                ))}
+            </td>
+
+            <td>{email}</td>
+            <td>{formattedDate}</td>
+            <td>{order_status}</td>
+            <th>
+                <Link to={`/Paymentdetails/${_id}`} className="btn btn-primary btn-sm">
+                    Details
+                </Link>
+            </th>
+        </tr>
+    );
 };
 
 export default PayemntTable;

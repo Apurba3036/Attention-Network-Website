@@ -32,9 +32,7 @@ const Table = ({booking, handleDelete}) => {
         </td>
         <td>{mobile} <br /> {email}</td>
         <td>{date}</td>
-        <td>{status === 'accepted' ? <FaCheck /> : (
-                    <p className='font-bold'>Pending</p>
-                )}</td>
+        <td>{status === 'accepted' ? <FaCheck /> : ( <p className='font-bold'>Pending</p>)}</td>
         <th>
           <button onClick={()=>handleDelete(_id)} className="btn btn-warning btn-xs">Delete</button>
         </th>

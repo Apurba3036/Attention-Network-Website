@@ -31,6 +31,7 @@ import Allusers from './Pages/Admin/Allusers';
 import AdminRoute from './PrivateRoute/AdminRoute';
 import Payment from './Pages/Payment/Payment';
 import AdminHome from './Pages/Admin/AdminHome';
+import Paymentdetails from './Pages/Payment/Paymentdetails';
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -89,6 +90,13 @@ const router = createBrowserRouter([
       {
         path: "/details/:id",
         element:<CardDetails></CardDetails>,
+        
+
+      }
+      ,
+      {
+        path: "/Paymentdetails/:id",
+        element:<Paymentdetails></Paymentdetails>,
         
 
       }
