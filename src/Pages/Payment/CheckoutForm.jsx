@@ -115,7 +115,7 @@ const CheckoutForm = ({totalprice, bookings}) => {
 
     }
     return (
-        <div className='bg-slate-100 rounded-lg p-5 md:p-10'>
+        <div className='bg-slate-100 rounded-lg w-full p-2'>
             <form onSubmit={handleSubmit}>
         <CardElement
           options={{
