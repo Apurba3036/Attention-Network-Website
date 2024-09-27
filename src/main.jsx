@@ -32,6 +32,7 @@ import AdminRoute from './PrivateRoute/AdminRoute';
 import Payment from './Pages/Payment/Payment';
 import AdminHome from './Pages/Admin/AdminHome';
 import Paymentdetails from './Pages/Payment/Paymentdetails';
+import Success from './Pages/Payment/Success';
 const queryClient = new QueryClient()
 
 const router = createBrowserRouter([
@@ -90,6 +91,12 @@ const router = createBrowserRouter([
       {
         path: "/details/:id",
         element:<CardDetails></CardDetails>,
+        
+
+      },
+      {
+        path: "/success",
+        element:<Success></Success>,
         
 
       }

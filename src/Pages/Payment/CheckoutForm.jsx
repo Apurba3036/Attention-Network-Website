@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {CardElement, useElements, useStripe} from '@stripe/react-stripe-js'
 import { AuthContext } from '../../Providers/AuthProvider';
 const CheckoutForm = ({totalprice, bookings}) => {
