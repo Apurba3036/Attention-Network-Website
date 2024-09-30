@@ -72,6 +72,7 @@ const Allbookings = () => {
                             <th>Contact Information</th>
                             <th>Date</th>
                             <th>Amount</th>
+                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>

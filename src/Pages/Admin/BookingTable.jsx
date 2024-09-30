@@ -67,6 +67,9 @@ const BookingTable = ({ booking, handleDelete, refetch }) => {  // Added refetch
                     </button>
                 )}
             </th>
+            <th>
+                <p>Payment not done yet</p>
+            </th>
         </tr>
     );
 };

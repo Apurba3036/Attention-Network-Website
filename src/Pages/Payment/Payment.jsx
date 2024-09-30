@@ -75,7 +75,7 @@ const Payment = () => {
           {/* Payment Options */}
           <div className="grid grid-cols-1 md:grid-cols-1 gap-8">
             {/* Stripe Payment */}
-            <div className="flex flex-col items-center p-5 border border-blue-200 rounded-lg hover:shadow-lg">
+            {/* <div className="flex flex-col items-center p-5 border border-blue-200 rounded-lg hover:shadow-lg">
               <img
                 src="https://cdn.brandfetch.io/stripe.com/fallback/transparent/theme/dark/h/512/w/512/icon?t=1717858517316"
                 alt="Stripe Logo"
@@ -87,7 +87,7 @@ const Payment = () => {
               <p className="mt-4 text-sm text-gray-500">
                 Secure payment via Stripe
               </p>
-            </div>
+            </div> */}
   
             {/* SSLCommerze Payment */}
             <div className="flex flex-col items-center p-5 border border-blue-200 rounded-lg hover:shadow-lg">
